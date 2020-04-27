@@ -14,7 +14,7 @@ server.use(helmet());
 
 server.use("/api/auth", authRouter);
 server.use("/api/users", userRouter);
-//server.use("/api/posts", postRouter);
+server.use("/api/posts", postRouter);
 
 server.get("/", (req, res) => {
   res.status(200).json({ api: "running" });
