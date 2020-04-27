@@ -3,7 +3,8 @@ const db = require("./dbConfig");
 module.exports = {
   addUser,
   getUsers,
-  getUserBy,
+  getByUsername,
+  getById,
   updateUser,
   getPostById,
   getUserPosts,
@@ -11,16 +12,24 @@ module.exports = {
 };
 
 // make this return the user object and not just the ID
-function addUser(user) {
-  return null;
+function addUser(newUser) {
+  return db("user")
+    .insert(newUser)
+    .then((id) => {
+      return getById(id[0]);
+    });
 }
 
 function getUsers() {
-  return null;
+  return db("user").select("id", "username");
 }
 
-function getUserBy(filter) {
-  return null;
+function getByUsername(username) {
+  return db("user").where({ username }).select("id", "username");
+}
+
+function getById(id) {
+  return db("user").where({ id }).select("id", "username");
 }
 
 function updateUser(id, newInfo) {
@@ -28,7 +37,7 @@ function updateUser(id, newInfo) {
 }
 
 function getPostById(id) {
-  return null;
+  return db("post").where({ id });
 }
 
 function getUserPosts(id) {
@@ -36,5 +45,5 @@ function getUserPosts(id) {
 }
 
 function getAllPosts() {
-  return null;
+  return db("post");
 }
