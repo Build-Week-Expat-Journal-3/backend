@@ -7,7 +7,7 @@ const User = require("../data/dbModel");
 
 router.post("/register", (req, res) => {
   let creds = req.body;
-  const rounds = 10;
+  const rounds = process.env.HASH_ROUNDS;
   const hash = bcrypt.hashSync(creds.password, rounds);
 
   creds.password = hash;
@@ -29,7 +29,7 @@ router.post("/login", (req, res) => {
         const token = createToken(user);
         res.status(200).json({ message: `welcome ${user[0].username}`, token });
       } else {
-        res.status(401).json({ message: "failed to authenticate :( :( " });
+        res.status(401).json({ message: "failed to authenticate" });
       }
     })
     .catch((err) => {

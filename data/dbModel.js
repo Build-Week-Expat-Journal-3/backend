@@ -6,9 +6,11 @@ module.exports = {
   getByUsername,
   getById,
   updateUser,
+  deleteUser,
   getPostById,
   getUserPosts,
   getAllPosts,
+  deletePost,
 };
 
 // make this return the user object and not just the ID
@@ -32,6 +34,10 @@ function getById(id) {
   return db("user").where({ id }).select("id", "username");
 }
 
+function deleteUser(id) {
+  return db("user").where({ id }).del();
+}
+
 function updateUser(id, newInfo) {
   return null;
 }
@@ -46,4 +52,8 @@ function getUserPosts(id) {
 
 function getAllPosts() {
   return db("post");
+}
+
+function deletePost(id) {
+  return db("post").where({ id }).del();
 }
