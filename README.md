@@ -2,7 +2,7 @@
 
 ### Endpoints
 
-#### ALL GET ENDPOINTS, AS WELL AS LOGIN/REGISTER DO NOT REQUIRE AUTHENTICATION. Any other requests must be sent with an Authorization header containing the token.
+#### ALL GET ENDPOINTS, AS WELL AS LOGIN/REGISTER DO NOT REQUIRE AUTHENTICATION. Any other requests must be sent with an Authorization header containing the json web token.
 
 | Method | Endpoint             | Description                                                                                                                                                                                                 |
 | ------ | -------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
