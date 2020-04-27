@@ -9,12 +9,13 @@ exports.seed = function (knex) {
     {
       username: "john",
       password: "$2a$08$90FS3GcHzgCPnAgIWV7oxOS7I3F4UBuYK3UFWb5qjJiVu9q/Dkntu",
-      bio: "Trying to visit as many beaches as possible before I die.",
+      bio:
+        "Trying to visit as many beaches as possible before I die. From New Orleans, Louisiana.",
     },
     {
       username: "joe",
       password: "$2a$08$KUsxReAxKjFpxSvEe9ia8eHicr42ZLphlSeKF2k6WdeAmuUks7tX6",
-      bio: "Avid rock climber.",
+      bio: "Avid rock climber. From Ithaca, NY.",
     },
   ]);
 };

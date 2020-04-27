@@ -40,7 +40,12 @@ function deleteUser(id) {
 }
 
 function updateBio(id, bio) {
-  return db("user").where({ id }).update(bio);
+  return db("user")
+    .where({ id })
+    .update(bio)
+    .then(() => {
+      return getById(id);
+    });
 }
 
 function addPost(newPost) {

@@ -2,6 +2,8 @@ const router = require("express").Router();
 
 const db = require("../data/dbModel");
 
+const authenticate = require("../auth/authenticator");
+
 router.get("/", (req, res) => {
   db.getAllPosts()
     .then((posts) => {
@@ -26,7 +28,7 @@ router.get("/:id", (req, res) => {
     });
 });
 
-router.delete("/:id", (req, res) => {
+router.delete("/:id", authenticate, (req, res) => {
   db.deletePost(req.params.id)
     .then(() => {
       res.status(200).json({ message: "successfully deleted" });
@@ -36,7 +38,7 @@ router.delete("/:id", (req, res) => {
     });
 });
 
-router.put("/:id", (req, res) => {
+router.put("/:id", authenticate, (req, res) => {
   const id = req.params.id;
 
   if (req.body.story) {

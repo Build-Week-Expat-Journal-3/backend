@@ -62,8 +62,8 @@ router.put("/:id/bio", authenticate, (req, res) => {
         bio: req.body.bio,
       };
       db.updateBio(id, bio)
-        .then(() => {
-          res.status(201).json({ message: "successfully updated" });
+        .then((user) => {
+          res.status(201).json(user);
         })
         .catch((err) => {
           res.status(500).json({ error: err.message });
