@@ -5,7 +5,7 @@ module.exports = {
   getUsers,
   getByUsername,
   getById,
-  updateUser,
+  updateUsername,
   deleteUser,
   getPostById,
   getUserPosts,
@@ -27,27 +27,27 @@ function getUsers() {
 }
 
 function getByUsername(username) {
-  return db("user").where({ username }).select("id", "username");
+  return db("user").where({ username }).select("id", "username").first();
 }
 
 function getById(id) {
-  return db("user").where({ id }).select("id", "username");
+  return db("user").where({ id }).select("id", "username").first();
 }
 
 function deleteUser(id) {
   return db("user").where({ id }).del();
 }
 
-function updateUser(id, newInfo) {
-  return null;
+function updateUsername(id, username) {
+  return db("user").where({ id }).update(username);
 }
 
 function getPostById(id) {
-  return db("post").where({ id });
+  return db("post").where({ id }).first();
 }
 
 function getUserPosts(id) {
-  return null;
+  return db("post").where({ user_id: id });
 }
 
 function getAllPosts() {
