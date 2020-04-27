@@ -2,6 +2,8 @@
 
 ### Endpoints
 
+#### ALL GET ENDPOINTS, AS WELL AS LOGIN/REGISTER DO NOT REQUIRE AUTHENTICATION. Any other requests must be sent with an Authorization header containing the token.
+
 | Method | Endpoint             | Description                                                                                                                                                                                                 |
 | ------ | -------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | POST   | /api/auth/register   | Creates a user using the information sent inside the `request body`. Returns the new user and the authorization token. username and password are required fields, bio is optional and can be updated later. |
@@ -24,3 +26,34 @@ and updates the post story for the post object with the specified ID. |
 |POST | /api/users/:id/posts | Creates a new post using the information sent inside the request body. title and image are required. ID and timestamp are created by the database. Location and story are optional. `PROTECTED' |
 
 |
+
+## POST LOGIN
+
+{
+username: '',
+password: '',
+}
+
+BOTH REQUIRED FIELDS
+
+## POST REGISTER
+
+{
+username: '',
+password: '',
+bio: '',
+}
+
+USERNAME & PASSWORD REQUIRED. bio is optional.
+
+## PUT /api/users/:id/bio
+
+{
+bio: 'new bio goes here'
+}
+
+## PUT /api/posts/:id
+
+{
+story: 'new story goes here',
+}
