@@ -26,4 +26,14 @@ router.get("/:id", (req, res) => {
     });
 });
 
+router.delete("/:id", (req, res) => {
+  db.deletePost(req.params.id)
+    .then(() => {
+      res.status(200).json({ message: "success" });
+    })
+    .catch((err) => {
+      res.status(500).json({ error: err.message });
+    });
+});
+
 module.exports = router;
