@@ -1,7 +1,6 @@
 const router = require("express").Router();
 const bcrypt = require("bcryptjs");
 const createToken = require("../config/create-token");
-require("dotenv").config();
 
 const User = require("../data/dbModel");
 
