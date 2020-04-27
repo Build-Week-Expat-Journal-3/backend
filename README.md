@@ -4,15 +4,10 @@
 
 #### ALL GET ENDPOINTS, AS WELL AS LOGIN/REGISTER DO NOT REQUIRE AUTHENTICATION. Any other requests must be sent with an Authorization header containing the token.
 
-| Method | Endpoint             | Description                                                                                                                                                                                                 |
-| ------ | -------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| POST   | /api/auth/register   | Creates a user using the information sent inside the `request body`. Returns the new user and the authorization token. username and password are required fields, bio is optional and can be updated later. |
-| POST   | /api/auth/login      | checks user credentials against the `request body`, and returns an authorization token. Username and password are required.                                                                                 |
-| GET    | /api/users           | Returns an array of all the users contained in the database.                                                                                                                                                |
-| GET    | /api/users/:id       | Returns the user object with the specified id from URL.                                                                                                                                                     |
-| GET    | /api/users/:id/posts | Returns an array of all the post objects associated with the user with the specified id provided in URL.                                                                                                    |
-| GET    | /api/posts/          | Returns an array of all of the posts objects in the database. Not protected.                                                                                                                                |
-| GET    | /api/posts/:id       | Returns the post object with the associated post ID specified in URL.                                                                                                                                       |
+| Method | Endpoint           | Description                                                                                                                                                                                                 |
+| ------ | ------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| POST   | /api/auth/register | Creates a user using the information sent inside the `request body`. Returns the new user and the authorization token. username and password are required fields, bio is optional and can be updated later. |
+| POST   | /api/auth/login    | checks user credentials against the `request body`, and returns an authorization token. Username and password are required.                                                                                 |
 
 |DELETE | /api/users/:id | Removes the user with the specified id and returns a success message. `PROTECTED` |
 
@@ -23,6 +18,11 @@
 and updates the post story for the post object with the specified ID. |
 |
 |POST | /api/users/:id/posts | Creates a new post using the information sent inside the request body. title and image are required. ID and timestamp are created by the database. Location and story are optional. `PROTECTED' | |
+| GET | /api/users | Returns an array of all the users contained in the database. |
+| GET | /api/users/:id | Returns the user object with the specified id from URL. |
+| GET | /api/users/:id/posts | Returns an array of all the post objects associated with the user with the specified id provided in URL. |
+| GET | /api/posts/ | Returns an array of all of the posts objects in the database. Not protected. |
+| GET | /api/posts/:id | Returns the post object with the associated post ID specified in URL. |
 
 |
 
