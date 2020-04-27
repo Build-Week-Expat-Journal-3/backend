@@ -1,5 +1,4 @@
 const jwt = require("jsonwebtoken");
-require("dotenv").config();
 
 module.exports = (user) => {
   const payload = {
@@ -7,7 +6,7 @@ module.exports = (user) => {
     username: user.username,
   };
 
-  const secret = process.env.JWT_KEY;
+  const secret = process.env.JWT_KEY || "secret";
 
   const options = {
     expiresIn: "8h",
