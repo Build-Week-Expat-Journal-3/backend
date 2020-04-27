@@ -12,6 +12,7 @@ module.exports = {
   getUserPosts,
   getAllPosts,
   deletePost,
+  updatePost,
 };
 
 function addUser(newUser) {
@@ -64,4 +65,8 @@ function getAllPosts() {
 
 function deletePost(id) {
   return db("post").where({ id }).del();
+}
+
+function updatePost(id, newPost) {
+  return db("post").where({ id }).update(newPost);
 }

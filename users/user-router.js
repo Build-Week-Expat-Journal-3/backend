@@ -61,7 +61,7 @@ router.put("/:id", (req, res) => {
       };
       db.updateUsername(id, username)
         .then(() => {
-          res.status(201).json({ message: "success" });
+          res.status(201).json({ message: "successfully updated" });
         })
         .catch((err) => {
           res.status(500).json({ error: err.message });
