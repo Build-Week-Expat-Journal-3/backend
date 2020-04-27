@@ -2,6 +2,8 @@ const router = require("express").Router();
 
 const db = require("../data/dbModel");
 
+const authenticate = require("../auth/authenticator");
+
 router.get("/", (req, res) => {
   db.getUsers()
     .then((users) => {
@@ -40,7 +42,7 @@ router.get("/:id/posts", (req, res) => {
     });
 });
 
-router.delete("/:id", (req, res) => {
+router.delete("/:id", authenticate, (req, res) => {
   db.deleteUser(req.params.id)
     .then(() => {
       res.status(200).json({ message: "successfully deleted" });
@@ -50,16 +52,16 @@ router.delete("/:id", (req, res) => {
     });
 });
 
-router.put("/:id", (req, res) => {
+router.put("/:id/bio", authenticate, (req, res) => {
   const id = req.params.id;
 
-  if (req.body.username) {
+  if (req.body.bio) {
     db.getById(id).then((user) => {
-      const username = {
+      const bio = {
         ...user,
-        username: req.body.username,
+        bio: req.body.bio,
       };
-      db.updateUsername(id, username)
+      db.updateBio(id, bio)
         .then(() => {
           res.status(201).json({ message: "successfully updated" });
         })
@@ -68,11 +70,11 @@ router.put("/:id", (req, res) => {
         });
     });
   } else {
-    res.status(400).json({ message: "please provide a new username" });
+    res.status(400).json({ message: "please provide a biography" });
   }
 });
 
-router.post("/:id/posts", (req, res, next) => {
+router.post("/:id/posts", authenticate, (req, res) => {
   const newPost = req.body;
 
   db.addPost(newPost)
