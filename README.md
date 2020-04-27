@@ -4,7 +4,7 @@ https://expat-journal3.herokuapp.com/
 
 ### Endpoints
 
-#### ALL GET ENDPOINTS, AS WELL AS LOGIN/REGISTER DO NOT REQUIRE AUTHENTICATION. Any other requests must be sent with an Authorization header containing the token.
+#### All get endpoints, as well as login and register endpoints do not require an auth header. Any other requests must be sent with an Authorization header containing the token.
 
 | Method | Endpoint             | Description                                                                                                                                                                                                 |
 | ------ | -------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -38,7 +38,7 @@ password: '',
 bio: '',
 }
 
-USERNAME & PASSWORD REQUIRED. bio is optional.
+USERNAME and PASSWORD \*required. bio is optional.
 
 ## PUT /api/users/:id/bio
 
