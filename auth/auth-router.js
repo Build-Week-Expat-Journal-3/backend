@@ -7,7 +7,7 @@ const User = require("../data/dbModel");
 
 router.post("/register", (req, res) => {
   let creds = req.body;
-  const rounds = process.env.HASH_ROUNDS;
+  const rounds = 8;
   const hash = bcrypt.hashSync(creds.password, rounds);
 
   creds.password = hash;

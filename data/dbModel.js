@@ -7,13 +7,13 @@ module.exports = {
   getById,
   updateUsername,
   deleteUser,
+  addPost,
   getPostById,
   getUserPosts,
   getAllPosts,
   deletePost,
 };
 
-// make this return the user object and not just the ID
 function addUser(newUser) {
   return db("user")
     .insert(newUser)
@@ -31,7 +31,7 @@ function getByUsername(username) {
 }
 
 function getById(id) {
-  return db("user").where({ id }).select("id", "username").first();
+  return db("user as u").where({ id }).select("id", "username").first();
 }
 
 function deleteUser(id) {
@@ -40,6 +40,14 @@ function deleteUser(id) {
 
 function updateUsername(id, username) {
   return db("user").where({ id }).update(username);
+}
+
+function addPost(newPost) {
+  return db("post")
+    .insert(newPost)
+    .then((id) => {
+      return getPostById(id[0]);
+    });
 }
 
 function getPostById(id) {

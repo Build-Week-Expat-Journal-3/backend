@@ -72,4 +72,16 @@ router.put("/:id", (req, res) => {
   }
 });
 
+router.post("/:id/posts", (req, res, next) => {
+  const newPost = req.body;
+
+  db.addPost(newPost)
+    .then((post) => {
+      res.status(201).json(post);
+    })
+    .catch((err) => {
+      res.status(500).json({ error: err.message });
+    });
+});
+
 module.exports = router;
