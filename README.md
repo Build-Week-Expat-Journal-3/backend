@@ -16,7 +16,7 @@
 
 |DELETE | /api/users/:id | Removes the user with the specified id and returns a success message. `PROTECTED` |
 
-| DELETE | /api/posts/:id | Removes the post with the specified id and returns a success message. `PROTECTED`  
+| DELETE | /api/posts/:id | Removes the post with the specified id and returns a success message. `PROTECTED` |
 | PUT | /api/users/:id/bio | Updates the user bio with the specified `id` using data from the `request body`. Returns the modified user object. `PROTECTED` |
 |
 | PUT | /api/posts/:id | Takes a request body object
