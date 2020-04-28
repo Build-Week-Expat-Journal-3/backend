@@ -17,7 +17,7 @@ module.exports = {
 
 function addUser(newUser) {
   return db("user")
-    .insert(newUser)
+    .insert(newUser, "id")
     .then((id) => {
       return getById(id[0]);
     });
@@ -32,7 +32,7 @@ function getByUsername(username) {
 }
 
 function getById(id) {
-  return db("user as u").where({ id });
+  return db("user").where({ id });
 }
 
 function deleteUser(id) {
