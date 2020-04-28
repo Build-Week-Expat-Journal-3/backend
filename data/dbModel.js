@@ -57,7 +57,7 @@ function addPost(newPost) {
 }
 
 function getPostById(id) {
-  return db("post").where({ id }).first();
+  return db("post").where({ id });
 }
 
 function getUserPosts(id) {
