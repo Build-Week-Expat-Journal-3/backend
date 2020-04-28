@@ -28,11 +28,11 @@ function getUsers() {
 }
 
 function getByUsername(username) {
-  return db("user").where({ username }).select("id", "username", "bio").first();
+  return db("user").where({ username });
 }
 
 function getById(id) {
-  return db("user").where({ id }).select("id", "username", "bio");
+  return db("user").where({ id });
 }
 
 function deleteUser(id) {
