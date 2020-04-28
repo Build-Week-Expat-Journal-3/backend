@@ -20,19 +20,44 @@ router.post("/register", (req, res) => {
     });
 });
 
+// router.post("/login", (req, res) => {
+//   User.getByUsername(req.body.username)
+//     .then((user) => {
+//       if (user && bcrypt.compareSync(req.body.password, user[0].password)) {
+//         const token = createToken(user[0]);
+//         res.status(200).json({ user: user[0].id, token });
+//       } else {
+//         res.status(401).json({ message: "failed to authenticate" });
+//       }
+//     })
+//     .catch((err) => {
+//       console.log(err);
+//       res.status(500).json({ error: err.message });
+//     });
+// });
+
 router.post("/login", (req, res) => {
-  User.getByUsername(req.body.username)
+  const { username, password } = req.body;
+
+  db.getByUsername(username)
     .then((user) => {
-      if (user && bcrypt.compareSync(req.body.password, user[0].password)) {
-        const token = createToken(user[0]);
-        res.status(200).json({ user: user[0].id, token });
+      if (user && bcrypt.compareSync(password, user.password)) {
+        const token = createToken(user);
+
+        res.status(200).json({
+          message: `Welcome ${user.username}`,
+          token,
+          user: {
+            user_id: user.id,
+            username: user.username,
+          },
+        });
       } else {
-        res.status(401).json({ message: "failed to authenticate" });
+        res.status(401).json({ message: "Incorrect username or password" });
       }
     })
-    .catch((err) => {
-      console.log(err);
-      res.status(500).json({ error: err.message });
+    .catch(({ name, message, stack }) => {
+      res.status(500).json({ name: name, message: message, stack: stack });
     });
 });
 
