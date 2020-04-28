@@ -32,7 +32,7 @@ function getByUsername(username) {
 }
 
 function getById(id) {
-  return db("user as u").where({ id }).select("id", "username", "bio").first();
+  return db("user as u").where({ id });
 }
 
 function deleteUser(id) {
