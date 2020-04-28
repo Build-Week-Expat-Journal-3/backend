@@ -5,9 +5,8 @@ const createToken = require("../config/create-token");
 const User = require("../data/dbModel");
 
 router.post("/register", (req, res) => {
-  let creds = req.body;
-  const rounds = 8;
-  const hash = bcrypt.hashSync(creds.password, rounds);
+  const creds = req.body;
+  const hash = bcrypt.hashSync(creds.password, 9);
 
   creds.password = hash;
 
@@ -17,7 +16,7 @@ router.post("/register", (req, res) => {
       res.status(201).json({ user: newUser, token });
     })
     .catch((err) => {
-      res.status(500).json({ error: err });
+      res.status(500).json({ error: err.message });
     });
 });
 
