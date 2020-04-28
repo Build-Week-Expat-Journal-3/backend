@@ -25,7 +25,7 @@ router.post("/login", (req, res) => {
     .then((user) => {
       if (user && bcrypt.compareSync(req.body.password, user[0].password)) {
         const token = createToken(user[0]);
-        res.status(200).json({ user: user[0].username, token });
+        res.status(200).json({ message: `welcome ${user[0].username}`, token });
       } else {
         res.status(401).json({ message: "failed to authenticate" });
       }
@@ -35,30 +35,5 @@ router.post("/login", (req, res) => {
       res.status(500).json({ error: err.message });
     });
 });
-
-// router.post("/login", (req, res) => {
-//   const { username, password } = req.body;
-
-//   User.getByUsername(username)
-//     .then((user) => {
-//       if (user && bcrypt.compareSync(password, user.password)) {
-//         const token = createToken(user);
-
-//         res.status(200).json({
-//           message: `Welcome ${user.username}`,
-//           token,
-//           user: {
-//             user_id: user.id,
-//             username: user.username,
-//           },
-//         });
-//       } else {
-//         res.status(401).json({ message: "Incorrect username or password" });
-//       }
-//     })
-//     .catch(({ name, message, stack }) => {
-//       res.status(500).json({ name: name, message: message, stack: stack });
-//     });
-// });
 
 module.exports = router;
