@@ -24,7 +24,7 @@ router.post("/login", (req, res) => {
   User.getByUsername(req.body.username)
     .then((user) => {
       if (user && bcrypt.compareSync(req.body.password, user[0].password)) {
-        const token = createToken(user[0]);
+        const token = createToken(user);
         res.status(200).json({ message: `welcome ${user[0].username}`, token });
       } else {
         res.status(401).json({ message: "failed to authenticate" });
