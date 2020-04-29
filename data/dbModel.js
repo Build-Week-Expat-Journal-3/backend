@@ -73,5 +73,5 @@ function deletePost(id) {
 }
 
 function updatePost(id, newPost) {
-  return db("post").where({ id }).update(newPost);
+  return db("post").where({ id }).update({ story: newPost });
 }
