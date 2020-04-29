@@ -49,11 +49,10 @@ function updateBio(id, bio) {
 }
 
 function addPost(newPost) {
-  return db("post")
-    .insert(newPost)
-    .then((id) => {
-      return getPostById(id[0]);
-    });
+  return db("post").insert(newPost);
+  // .then((id) => {
+  //   return getPostById(id[0]);
+  // });
 }
 
 function getPostById(id) {

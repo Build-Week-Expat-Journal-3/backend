@@ -78,8 +78,8 @@ router.post("/:id/posts", authenticate, (req, res) => {
   const newPost = req.body;
 
   db.addPost(newPost)
-    .then((post) => {
-      res.status(201).json(post);
+    .then(() => {
+      res.status(201).json({ message: "success" });
     })
     .catch((err) => {
       res.status(500).json({ error: err.message });
