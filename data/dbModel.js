@@ -64,7 +64,7 @@ function getUserPosts(id) {
 }
 
 function getAllPosts() {
-  return db("post");
+  return db("post").orderBy("id", "desc");
 }
 
 function deletePost(id) {
