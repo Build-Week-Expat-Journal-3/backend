@@ -7,8 +7,6 @@ const user = {
   password: "doe",
 };
 
-let token;
-
 const post = {
   title: "test",
   img_url: "test.url",
@@ -35,9 +33,13 @@ afterEach((done) => {
 
 describe("user-router.js", () => {
   describe("GET /api/users/", () => {
-    it("should return an array", async () => {
+    it("should return a status of 200", async () => {
       let res = await request(server).get("/api/users");
       expect(res.status).toBe(200);
+    });
+    it("should return an array", async () => {
+      let res = await request(server).get("/api/users");
+      expect(res.body.length).toBe(3);
     });
   });
 
@@ -48,8 +50,8 @@ describe("user-router.js", () => {
     });
 
     it("should return the user object associated it ID in URL", async () => {
-      let res = await request(server).get("/api/users");
-      expect(res.body[0].username).toBeTruthy();
+      let res = await request(server).get("/api/users/1");
+      expect(res.body[0].id).toBe(1);
     });
   });
 
@@ -66,7 +68,7 @@ describe("user-router.js", () => {
   });
 
   describe("DELETE user /api/users/:id", () => {
-    it("deletes a user and returns status of 200", async () => {
+    it("returns status of 200", async () => {
       let login = await request(server).post("/api/auth/login").send(user);
       token = await login.body.token;
 
@@ -74,6 +76,24 @@ describe("user-router.js", () => {
         .delete("/api/users/1")
         .set({ Authorization: token });
       expect(res.status).toBe(200);
+    });
+
+    it("removes the deleted user from the users table", async () => {
+      let login = await request(server).post("/api/auth/login").send(user);
+      token = await login.body.token;
+
+      await request(server)
+        .delete("/api/users/2")
+        .set({ Authorization: token });
+
+      let res = await request(server).get("/api/users/2");
+      expect(res.body).toHaveLength(0);
+    });
+
+    it("returns a status of 400 if not authenticated", async () => {
+      let res = await request(server).delete("/api/users/3");
+
+      expect(res.status).toBe(400);
     });
   });
 
@@ -99,6 +119,17 @@ describe("user-router.js", () => {
         .set({ Authorization: token })
         .send(post);
       expect(res.status).toBe(201);
+    });
+
+    it("returns a success message", async () => {
+      let login = await request(server).post("/api/auth/login").send(user);
+      token = await login.body.token;
+
+      let res = await request(server)
+        .post("/api/users/3/posts")
+        .set({ Authorization: token })
+        .send(post);
+      expect(res.body.message).toBe("success");
     });
   });
 });
