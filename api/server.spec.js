@@ -16,9 +16,9 @@ describe("server.js", () => {
       expect(res.status).toBe(200);
     });
 
-    it("should return a message saying the api is running", async () => {
-      let res = await request(server).get("/");
-      expect(res.body.api).toBe("running");
-    });
+    // it("should return a message saying the api is running", async () => {
+    //   let res = await request(server).get("/");
+    //   expect(res.body.api).toBe("running");
+    // });
   });
 });
