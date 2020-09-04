@@ -23,7 +23,7 @@ https://expat-journal3.herokuapp.com/
 
 ## POST LOGIN
 
-'''javascript
+'''js
 {
 username: '',
 password: '',
@@ -34,7 +34,7 @@ BOTH REQUIRED FIELDS
 
 ## POST REGISTER
 
-'''javascript
+'''js
 {
 username: '',
 password: '',
@@ -46,7 +46,7 @@ USERNAME and PASSWORD \*required. bio is optional.
 
 ## PUT /api/users/:id/bio
 
-'''javascript
+'''js
 {
 bio: 'new bio goes here'
 }
@@ -54,7 +54,7 @@ bio: 'new bio goes here'
 
 ## PUT /api/posts/:id
 
-'''javascript
+'''js
 {
 story: 'new story goes here',
 }
@@ -62,7 +62,7 @@ story: 'new story goes here',
 
 ## POST /api/user/:id/post
 
-'''javascript
+'''js
 {
 title: '',
 img_url: '',
