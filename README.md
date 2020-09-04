@@ -25,8 +25,8 @@ https://expat-journal3.herokuapp.com/
 
 ```javascript
 {
-username: '',
-password: '',
+  username: '',
+  password: '',
 }
 ```
 
@@ -36,9 +36,9 @@ BOTH REQUIRED FIELDS
 
 ```javascript
 {
-username: '',
-password: '',
-bio: '',
+  username: '',
+  password: '',
+  bio: '',
 }
 ```
 
@@ -48,7 +48,7 @@ USERNAME and PASSWORD \*required. bio is optional.
 
 ```javascript
 {
-bio: 'new bio goes here'
+  bio: 'new bio goes here'
 }
 ```
 
@@ -56,7 +56,7 @@ bio: 'new bio goes here'
 
 ```javascript
 {
-story: 'new story goes here',
+  story: 'new story goes here',
 }
 ```
 
@@ -64,11 +64,11 @@ story: 'new story goes here',
 
 ```javascript
 {
-title: '',
-img_url: '',
-location: '',
-story: '',
-user_id: 1
+  title: '',
+  img_url: '',
+  location: '',
+  story: '',
+  user_id: 1
 }
 ```
 
