@@ -1,6 +1,29 @@
-# Back End
+## Back End Server for Build Week - Expat Journal
+
+Expat Journal simulates a travel-blogging platform. Users can upload photos and share stories with other users.
+
+## Base URL
 
 https://expat-journal3.herokuapp.com/
+
+## Installation
+```shell
+npm install
+npm run server
+```
+
+## Tests
+```shell
+npm test <test file>
+```
+
+## Tech Stack
+- Node
+- Express
+- JWT
+- PostgreSQL
+- Knex
+- bcrypt
 
 ### Endpoints
 
